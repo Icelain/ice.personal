@@ -1,3 +1,6 @@
-Hello my man 
-## this blog is very cool
-[lqorg](lqorg.com)
+Hi 
+## blogs work on this website now
+[X](https://x.com/icelainl)
+[Github](https://github.com/icelain)
+
+Check out my socials

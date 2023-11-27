@@ -10,16 +10,21 @@
 <body class="h-screen">
 <div class="flex flex-col justify-center items-center flex-grow lg:text-lg sm:text-4xl">
 
-      <h1 class="lg:p-2 sm:p-5 text-green-500">Blogs~</h1>
-	 	<ul>
-			
-			{{range .P}}	
+      <p class="lg:p-2 sm:p-5 text-green-500">Blogs~</p>
 
-			<li class="b-4 hover:text-green-400"> {{.Title}} </li>
+</div>
 
-			{{end}}
+<div class="flex flex-col justify-center items-center flex-grow lg:text-lg sm:text-4xl lg:h-[calc(100vh-44px)] sm:h-[calc(100vh-90px)]">
 
-		</ul>
+	  <ul>
+		
+		{{range .P}}	
+
+		<li class="b-4 hover:text-green-400"> <a href="/blog/{{.Title}}"> {{.Title}} </a> </li>
+
+		{{end}}
+
+	  </ul>
 
 </div>
 
