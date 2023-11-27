@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+
+<head>
+
+	<title> Blogs </title>
+	<link href="/static/output.css" rel="stylesheet">
+
+</head>
+
+<body class="h-screen">
+<div class="flex flex-col justify-center items-center flex-grow lg:text-lg sm:text-4xl">
+
+      <h1 class="lg:p-2 sm:p-5 text-green-500">Blogs~</h1>
+	 	<ul>
+			
+			{{range .P}}	
+
+			<li class="b-4 hover:text-green-400"> {{.Title}} </li>
+
+			{{end}}
+
+		</ul>
+
+</div>
+
+<style>
+
+li {
+
+	color: #fafafa;
+
+}
+
+</style>
+
+</body>
+</html>

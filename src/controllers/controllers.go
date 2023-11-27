@@ -20,6 +20,12 @@ type Page struct {
 
 }
 
+type Pages struct {
+
+	P []Page
+
+}
+
 func HandleHTML(r chi.Router, paths []string, htmlpath string) {
 	
 	for _, path := range paths {
@@ -47,6 +53,8 @@ func HandleHTML(r chi.Router, paths []string, htmlpath string) {
 }
 
 func HandleBlog(router chi.Router, dir string) error{
+	
+	var pages Pages
 
 	files, err := os.ReadDir("./blogs")
 	if err != nil {
@@ -68,6 +76,8 @@ func HandleBlog(router chi.Router, dir string) error{
 
 		title := strings.TrimSuffix(file.Name(), ".md")
 		page := Page {Title: title, Content: template.HTML(renderedMd)}
+		
+		pages.P = append(pages.P, page)
 
 		tmpl, err := template.ParseFiles("./templates/blog.gohtml")
 		if err != nil {
@@ -85,7 +95,14 @@ func HandleBlog(router chi.Router, dir string) error{
 			}	
 		})
 
-	}	
+	}
+	
+	router.Get("/blog", func(w http.ResponseWriter, r *http.Request) {
+
+		tmpl := template.Must(template.ParseFiles("./templates/blogindex.gohtml"))
+		tmpl.Execute(w, pages)
+
+	})
 	
 	return nil
 }
