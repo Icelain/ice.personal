@@ -8,7 +8,7 @@ import (
 	"strings"
 	"os"
 	"fmt"
-
+	"io"
 	"iceblog/markdown"	
 	"github.com/go-chi/chi/v5"
 )
@@ -16,6 +16,7 @@ import (
 type Page struct {
 	
 	Title string
+	Date string
 	Content template.HTML
 
 }
@@ -71,11 +72,19 @@ func HandleBlog(router chi.Router, dir string) error{
 			return err
 
 		}
+	
+		markdownBytes, err := io.ReadAll(osfile)
+		if err != nil {log.Fatal(err)}
 
-		renderedMd := markdown.Render(osfile)
+		markdownString := string(markdownBytes)
+		
+		mdarr := strings.Split(markdownString, "---")
+
+		renderedMd := markdown.Render(mdarr[2])
+		yamlMap := markdown.ParseYaml(mdarr[1])
 
 		title := strings.TrimSuffix(file.Name(), ".md")
-		page := Page {Title: title, Content: template.HTML(renderedMd)}
+		page := Page {Title: title, Content: template.HTML(renderedMd), Date: yamlMap["date"]}
 		
 		pages.P = append(pages.P, page)
 

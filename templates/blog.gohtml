@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html class="flex flex-col justify-center items-center h-screen">
 	<head>
 		<title>My Blog!</title>
-		<link href="/static/blogstyle.css" type="text/css" rel="stylesheet">
+		<link href="/static/output.css" type="text/css" rel="stylesheet">
 	</head>
-	<body>
+	<body class="prose lg:prose-lg md:prose-lg sm:prose-xl prose-neutral prose-invert prose-a:text-green-400 flex flex-col justify-center items-center">
 		<h1>{{.Title}}</h1>
-		<div class="markdown-body">{{.Content}}</div>
-
+		{{.Content}}
 		<p><a href="/blog">Back to blogs</a></p>
 		<p><a href="/">Back home</a></p>
 

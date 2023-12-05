@@ -2,30 +2,20 @@ package markdown
 
 import (
 
-	"os"
-	"io"
 	"log"
 
 	"github.com/gomarkdown/markdown"
 	"github.com/gomarkdown/markdown/html"
 	"github.com/gomarkdown/markdown/parser"
+	"gopkg.in/yaml.v3"
 
 )
 
-func Render(file *os.File) string {
-	
-	md, err := io.ReadAll(file)
-
-	// handle the file parsing error here itself
-	if err != nil {
-
-		log.Fatal(err)
-
-	}
+func Render(mdstring string) string {
 
 	extensions := parser.CommonExtensions | parser.AutoHeadingIDs | parser.NoEmptyLineBeforeBlock
 	p := parser.NewWithExtensions(extensions)
-	doc := p.Parse(md)
+	doc := p.Parse([]byte(mdstring))
 
 	// create HTML renderer with extensions
 	htmlFlags := html.CommonFlags | html.HrefTargetBlank
@@ -33,5 +23,19 @@ func Render(file *os.File) string {
 	renderer := html.NewRenderer(opts)
 
 	return string(markdown.Render(doc, renderer))
+
+}
+
+func ParseYaml(mdstring string) map[string]string {
+
+	result := make(map[string]string)
+
+	if err := yaml.Unmarshal([]byte(mdstring), result); err != nil {
+
+		log.Println(err)
+
+	}
+	
+	return result
 
 }
