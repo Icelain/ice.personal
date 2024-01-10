@@ -1,34 +1,46 @@
 package controllers
 
 import (
-
-	"net/http"
-	"html/template"
-	"log"
-	"strings"
-	"os"
 	"fmt"
+	"html/template"
+	"iceblog/markdown"
 	"io"
-	"iceblog/markdown"	
+	"log"
+	"net/http"
+	"os"
+	"slices"
+	"strings"
+	"time"
+
 	"github.com/go-chi/chi/v5"
 )
 
 type Page struct {
-	
-	Title string
-	Date string
-	Content template.HTML
-
+	Title       string
+	DashedTitle string
+	Date        string
+	Content     template.HTML
 }
 
 type Pages struct {
-
 	P []Page
+}
+
+func titalize(str string) string {
+
+	title := ""
+	for _, word := range strings.Split(str, " ") {
+
+		title += strings.ToUpper(string(word[0])) + word[1:] + " "
+
+	}
+
+	return strings.TrimSuffix(title, " ")
 
 }
 
 func HandleHTML(r chi.Router, paths []string, htmlpath string) {
-	
+
 	for _, path := range paths {
 
 		r.Get(path, func(w http.ResponseWriter, r *http.Request) {
@@ -42,19 +54,19 @@ func HandleHTML(r chi.Router, paths []string, htmlpath string) {
 			}
 
 			if err := tmpl.Execute(w, nil); err != nil {
-				
-				log.Printf("failed to execute template index.html")	
 
-			}	
+				log.Printf("failed to execute template index.html")
 
-		})		
+			}
+
+		})
 
 	}
 
 }
 
-func HandleBlog(router chi.Router, dir string) error{
-	
+func HandleBlog(router chi.Router, dir string) error {
+
 	var pages Pages
 
 	files, err := os.ReadDir("./blogs")
@@ -65,27 +77,30 @@ func HandleBlog(router chi.Router, dir string) error{
 	}
 
 	for _, file := range files {
-		
+
 		osfile, err := os.Open("./blogs/" + file.Name())
 		if err != nil {
-			
+
 			return err
 
 		}
-	
+
 		markdownBytes, err := io.ReadAll(osfile)
-		if err != nil {log.Fatal(err)}
+		if err != nil {
+			log.Fatal(err)
+		}
 
 		markdownString := string(markdownBytes)
-		
+
 		mdarr := strings.Split(markdownString, "---")
 
 		renderedMd := markdown.Render(mdarr[2])
 		yamlMap := markdown.ParseYaml(mdarr[1])
 
-		title := strings.TrimSuffix(file.Name(), ".md")
-		page := Page {Title: title, Content: template.HTML(renderedMd), Date: yamlMap["date"]}
-		
+		dashTitle := strings.TrimSuffix(file.Name(), ".md")
+		title := titalize(strings.ReplaceAll(dashTitle, "-", " "))
+		page := Page{Title: title, DashedTitle: dashTitle, Content: template.HTML(renderedMd), Date: yamlMap["date"]}
+
 		pages.P = append(pages.P, page)
 
 		tmpl, err := template.ParseFiles("./templates/blog.gohtml")
@@ -95,27 +110,60 @@ func HandleBlog(router chi.Router, dir string) error{
 
 		}
 
-		router.Get(fmt.Sprintf("/blog/%s", title), func(w http.ResponseWriter, r *http.Request) {
+		router.Get(fmt.Sprintf("/blog/%s", dashTitle), func(w http.ResponseWriter, r *http.Request) {
 
 			if err := tmpl.Execute(w, page); err != nil {
-			
+
 				log.Printf(fmt.Sprintf("failed to execute template %s", file.Name()))
 
-			}	
+			}
 		})
 
 	}
-	
+
 	router.Get("/blog", func(w http.ResponseWriter, r *http.Request) {
 
 		tmpl := template.Must(template.ParseFiles("./templates/blogindex.gohtml"))
+
+		// sorts in descending order (not ascending) !!
+		// cmp function basically does the opposite of what its supposed to do
+		slices.SortFunc[[]Page, Page](pages.P, func(a, b Page) int {
+
+			at, err := time.Parse("Jan-1-2006", a.Date)
+			if err != nil {
+
+				log.Fatal("time format in markdown is wrong")
+
+			}
+
+			bt, err := time.Parse("Jan-1-2006", b.Date)
+			if err != nil {
+				log.Fatal("time format in markdown is wrong")
+
+			}
+
+			atime := at.Unix()
+			btime := bt.Unix()
+
+			if atime > btime {
+
+				return -1
+
+			} else if atime < btime {
+
+				return 1
+
+			}
+
+			return 0
+		})
+
 		tmpl.Execute(w, pages)
 
 	})
-	
+
 	return nil
 }
-
 
 func FileServer(r chi.Router, path string, root http.FileSystem) {
 	if strings.ContainsAny(path, "{}*") {

@@ -1104,6 +1104,33 @@ body {
   --tw-prose-td-borders: var(--tw-prose-invert-td-borders);
 }
 
+.my-1 {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.my-2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.my-4 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.mb-8 {
+  margin-bottom: 2rem;
+}
+
+.mt-1 {
+  margin-top: 0.25rem;
+}
+
 .flex {
   display: flex;
 }
@@ -1165,6 +1192,10 @@ body {
   font-weight: 500;
 }
 
+.italic {
+  font-style: italic;
+}
+
 .text-green-500 {
   --tw-text-opacity: 1;
   color: rgb(34 197 94 / var(--tw-text-opacity));
@@ -1199,6 +1230,14 @@ body {
 .prose-a\:text-green-400 :is(:where(a):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
   --tw-text-opacity: 1;
   color: rgb(74 222 128 / var(--tw-text-opacity));
+}
+
+.prose-pre\:whitespace-pre-wrap :is(:where(pre):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  white-space: pre-wrap;
+}
+
+.prose-pre\:text-left :is(:where(pre):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  text-align: left;
 }
 
 @media (min-width: 640px) {

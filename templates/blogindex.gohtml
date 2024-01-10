@@ -8,42 +8,45 @@
 </head>
 
 <body class="h-screen">
-<div class="flex flex-col justify-center items-center flex-grow lg:text-lg sm:text-4xl">
+	<div class="flex flex-col justify-center items-center flex-grow lg:text-lg sm:text-4xl">
 
-      <p class="lg:p-2 sm:p-5 text-green-500">Blogs~</p>
+		<p class="lg:p-2 sm:p-5 text-green-500">Blogs~</p>
 
-</div>
+	</div>
 
-<div class="flex flex-col justify-center items-center flex-grow lg:text-lg sm:text-4xl lg:h-[calc(100vh-88px)] sm:h-[calc(100vh-90px)]">
+	<div
+		class="flex flex-col justify-center items-center flex-grow lg:text-lg sm:text-4xl lg:h-[calc(100vh-88px)] sm:h-[calc(100vh-90px)]">
 
-	  <ul>
-		
-		{{range .P}}	
+		<ul>
 
-		<li class="bg-neutral-700 hover:bg-inherit rounded"> <a class="p-2" href="/blog/{{.Title}}"> {{.Date}} :: {{.Title}}</a> </li>
+			{{range .P}}
 
-		{{end}}
+			<li class="bg-neutral-700 hover:bg-inherit rounded my-2"> <a class="p-2" href="/blog/{{.DashedTitle}}">
+					{{.Date}}
+					:: {{.Title}}</a> </li>
 
-	  </ul>
+			{{end}}
 
-</div>
+		</ul>
 
-<div class="flex flex-col justify-center items-center flex-grow lg:text-lg sm:text-4xl">
+	</div>
 
-	<p class="lg:p-2 sm:p-5 text-green-500 underline"><a href="/">Back home</a></p>
+	<div class="flex flex-col justify-center items-center flex-grow lg:text-lg sm:text-4xl">
 
-</div>
+		<p class="lg:p-2 sm:p-5 text-green-500 underline"><a href="/">Back home</a></p>
+
+	</div>
 
 
-<style>
+	<style>
+		li {
 
-li {
+			color: #fafafa;
 
-	color: #fafafa;
+		}
 
-}
-
-</style>
+	</style>
 
 </body>
+
 </html>
