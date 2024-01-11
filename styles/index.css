@@ -16,6 +16,7 @@
   pre {
 
 	overflow: visible !important;
+	white-space: pre-wrap !important;
 
   }
 
