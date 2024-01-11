@@ -13,10 +13,12 @@
 
   }
 
-  pre {
+  pre, code {
 
-	overflow: visible !important;
+
 	white-space: pre-wrap !important;
+	overflow-wrap: break-word !important;
+	overflow: visible !important;
 
   }
 

@@ -442,9 +442,10 @@ body {
   background-color: #222;
 }
 
-pre {
-  overflow: visible !important;
+pre, code {
   white-space: pre-wrap !important;
+  overflow-wrap: break-word !important;
+  overflow: visible !important;
 }
 
 *, ::before, ::after {
@@ -1239,10 +1240,6 @@ pre {
 .prose-a\:text-green-400 :is(:where(a):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
   --tw-text-opacity: 1;
   color: rgb(74 222 128 / var(--tw-text-opacity));
-}
-
-.prose-pre\:overflow-x-auto :is(:where(pre):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
-  overflow-x: auto;
 }
 
 .prose-pre\:whitespace-pre-wrap :is(:where(pre):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
