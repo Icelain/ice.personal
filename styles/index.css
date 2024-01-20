@@ -3,8 +3,16 @@
 @tailwind utilities;
 
 @layer base {
+
+	@font-face{
+
+	font-family: "GeistFont";
+	src: url("/static/GeistMono-Regular.woff2") format("woff2");
+
+	}
+
   html {
-    font-family: "Courier New";
+    font-family: "GeistFont";
   }
 
   body {

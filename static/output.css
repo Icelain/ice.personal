@@ -434,8 +434,14 @@ video {
   display: none;
 }
 
+@font-face{
+  font-family: "GeistFont";
+
+  src: url("/static/GeistMono-Regular.woff2") format("woff2");
+}
+
 html {
-  font-family: "Courier New";
+  font-family: "GeistFont";
 }
 
 body {
@@ -1276,9 +1282,14 @@ pre, code {
 }
 
 @media (min-width: 768px) {
-  .md\:text-3xl {
-    font-size: 1.875rem;
-    line-height: 2.25rem;
+  .md\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  .md\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
   }
 }
 
@@ -1295,9 +1306,9 @@ pre, code {
     padding: 0.5rem;
   }
 
-  .lg\:text-lg {
-    font-size: 1.125rem;
-    line-height: 1.75rem;
+  .lg\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 
   .lg\:text-xl {
