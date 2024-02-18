@@ -1,50 +1,49 @@
 <!DOCTYPE html>
+<html class="flex flex-col items-center h-screen w-screen">
 
 <head>
-
-	<title> icelain's blog </title>
-	<link href="/static/output.css" rel="stylesheet">
-
+	<title>icelain's personal website</title>
+	<link href="/static/output.css" type="text/css" rel="stylesheet">
+	<link href="/static/prism.css" type="text/css" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body class="h-screen">
+<body
+	class="prose sm:text-3xl md:text-3xl lg:text-xl prose-neutral prose-invert prose-a:text-green-400 flex flex-col h-screen w-full items-center  my-4 prose-pre:text-left prose-pre:whitespace-pre-wrap text-center prose-li:m-0">
 
-
-	<nav class="nav font-medium lg:text-xl sm:text-5xl md:text-5xl">
-		<ul class="flex items-center flex-row justify-center">
+	<nav class="nav font-medium">
+		<ul class="flex items-center flex-row justify-center list-none p-0 m-0">
 			<li
-				class="lg:p-2 sm:p-5 text-green-500 duration-200 cursor-pointer hover:text-green-400 hover:underline active">
+				class="lg:px-2 sm:p-5 text-green-500 duration-200 cursor-pointer hover:text-green-400 hover:underline active">
 				<a href="/">Home</a>
 			</li>
-			<li class="lg:p-2 sm:p-5 text-green-500 duration-200 cursor-pointer hover:text-green-400 hover:underline">
+			<li class="lg:px-2 sm:p-5 text-green-500 duration-200 cursor-pointer hover:text-green-400 hover:underline">
 				<a href="https://github.com/icelain">Projects</a>
 			</li>
-			<li class="lg:p-2 sm:p-5 text-green-500 duration-200 cursor-pointer hover:text-green-400 hover:underline">
+			<li class="lg:px-2 sm:p-5 text-green-500 duration-200 cursor-pointer hover:text-green-400 hover:underline">
 				<a href="https://open.spotify.com/artist/1bWx8OEY8rvxUuw1F2vavp?si=5QDkaQoWRKaeF7Q7vtAsRg">Music</a>
 			</li>
-			<li class="lg:p-2 sm:p-5 text-green-500 duration-200 cursor-pointer hover:text-green-400 hover:underline">
+			<li class="lg:px-2 sm:p-5 text-green-500 duration-200 cursor-pointer hover:text-green-400 hover:underline">
 				<a href="/blog">Blog</a>
 			</li>
 		</ul>
 	</nav>
-	<!-- navigation -->
+
 	<div class="flex flex-1 items-center flex-col justify-center lg:h-[calc(100vh-48px)] sm:h-[calc(100vh-90px)]">
 
 
-		<div class="flex flex-col justify-center items-center flex-grow md:text-4xl sm:text-4xl lg:text-xl">
+		<div class="flex flex-col justify-center items-center flex-grow md:text-xl sm:text-3xl lg:text-lg not-prose">
 
-			<p class="text-neutral-200">This is icelain's personal website</p>
-			<p class="text-neutral-200">Email <a class="text-green-500"
-					href="mailto:xerneas965@gmail.com">xerneas965@gmail.com</a> or <a class="text-green-500"
-					href="https://x.com/icelainl">@icelainl</a> on X</p>
+			<p class="text-yellow-300 m-4">icelain's personal website</p>
+			<p><a class="text-green-500" href="mailto:xerneas965@gmail.com">Email</a></p>
+			<p><a class="text-green-500" href="https://x.com/icelainl">X/Twitter</a>
+			</p>
 
 		</div>
 	</div>
 
+
+
 </body>
-
-<style>
-
-</style>
 
 </html>
