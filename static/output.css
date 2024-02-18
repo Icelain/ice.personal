@@ -1116,6 +1116,14 @@ pre, code {
   --tw-prose-td-borders: var(--tw-prose-invert-td-borders);
 }
 
+.m-0 {
+  margin: 0px;
+}
+
+.m-4 {
+  margin: 1rem;
+}
+
 .my-1 {
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;
@@ -1171,6 +1179,10 @@ pre, code {
   cursor: pointer;
 }
 
+.list-none {
+  list-style-type: none;
+}
+
 .flex-row {
   flex-direction: row;
 }
@@ -1196,6 +1208,10 @@ pre, code {
   background-color: rgb(64 64 64 / var(--tw-bg-opacity));
 }
 
+.p-0 {
+  padding: 0px;
+}
+
 .p-2 {
   padding: 0.5rem;
 }
@@ -1217,9 +1233,9 @@ pre, code {
   color: rgb(34 197 94 / var(--tw-text-opacity));
 }
 
-.text-neutral-200 {
+.text-yellow-300 {
   --tw-text-opacity: 1;
-  color: rgb(229 229 229 / var(--tw-text-opacity));
+  color: rgb(253 224 71 / var(--tw-text-opacity));
 }
 
 .underline {
@@ -1256,6 +1272,10 @@ pre, code {
   text-align: left;
 }
 
+.prose-li\:m-0 :is(:where(li):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  margin: 0px;
+}
+
 @media (min-width: 640px) {
   .sm\:h-\[calc\(100vh-90px\)\] {
     height: calc(100vh - 90px);
@@ -1282,6 +1302,11 @@ pre, code {
 }
 
 @media (min-width: 768px) {
+  .md\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+
   .md\:text-4xl {
     font-size: 2.25rem;
     line-height: 2.5rem;
@@ -1311,9 +1336,19 @@ pre, code {
     padding: 0.5rem;
   }
 
+  .lg\:px-2 {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
   .lg\:text-2xl {
     font-size: 1.5rem;
     line-height: 2rem;
+  }
+
+  .lg\:text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
   }
 
   .lg\:text-xl {
