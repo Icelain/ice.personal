@@ -158,7 +158,11 @@ func HandleBlog(router chi.Router, dir string) error {
 			return 0
 		})
 
-		tmpl.Execute(w, pages)
+		if err := tmpl.Execute(w, pages); err != nil {
+
+			log.Fatal(err)
+
+		}
 
 	})
 
@@ -182,4 +186,21 @@ func FileServer(r chi.Router, path string, root http.FileSystem) {
 		fs := http.StripPrefix(pathPrefix, http.FileServer(root))
 		fs.ServeHTTP(w, r)
 	})
+}
+
+func MusicServer(r chi.Router, path string, musicfilepath string) {
+
+	r.Get("/music", func(w http.ResponseWriter, r *http.Request) {
+
+		tmpl := template.Must(template.ParseFiles("./templates/musicindex.gohtml"))
+		if err := tmpl.Execute(w, nil); err != nil {
+
+			log.Fatal(err)
+
+		}
+
+	})
+
+	StreamRadio(r, path, musicfilepath)
+
 }
