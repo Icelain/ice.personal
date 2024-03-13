@@ -12,6 +12,13 @@ import (
 	"github.com/go-chi/chi/v5"
 )
 
+const (
+	BUFFERSIZE = 8192
+
+	//formula for delay = track_duration * buffer_size / aac_file_size
+	DELAY = 150
+)
+
 type Connection struct {
 	bufferChannel chan []byte
 	buffer        []byte
@@ -70,14 +77,14 @@ func NewConnectionPool() *ConnectionPool {
 
 func stream(connectionPool *ConnectionPool, content []byte) {
 
-	buffer := make([]byte, 4096)
+	buffer := make([]byte, BUFFERSIZE)
 
 	for {
 
 		// clear() is a new builtin function introduced in go 1.21. Just reinitialize the buffer if on a lower version.
 		clear(buffer)
 		tempfile := bytes.NewReader(content)
-		ticker := time.NewTicker(time.Millisecond * 100)
+		ticker := time.NewTicker(time.Millisecond * DELAY)
 
 		for range ticker.C {
 
@@ -130,7 +137,7 @@ func StreamRadio(r chi.Router, path string, filepath string) {
 
 		}
 
-		connection := &Connection{bufferChannel: make(chan []byte), buffer: make([]byte, 4096)}
+		connection := &Connection{bufferChannel: make(chan []byte), buffer: make([]byte, BUFFERSIZE)}
 		connPool.AddConnection(connection)
 		log.Printf("%s has connected to the audio stream\n", r.Host)
 
