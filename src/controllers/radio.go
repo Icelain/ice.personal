@@ -12,26 +12,31 @@ import (
 	"github.com/go-chi/chi/v5"
 )
 
+type Connection struct {
+	bufferChannel chan []byte
+	buffer        []byte
+}
+
 type ConnectionPool struct {
-	bufferChannelMap map[chan []byte]struct{}
-	mu               sync.Mutex
+	ConnectionMap map[*Connection]struct{}
+	mu            sync.Mutex
 }
 
-func (cp *ConnectionPool) AddConnection(bufferChannel chan []byte) {
+func (cp *ConnectionPool) AddConnection(connection *Connection) {
 
 	defer cp.mu.Unlock()
 	cp.mu.Lock()
 
-	cp.bufferChannelMap[bufferChannel] = struct{}{}
+	cp.ConnectionMap[connection] = struct{}{}
 
 }
 
-func (cp *ConnectionPool) DeleteConnection(bufferChannel chan []byte) {
+func (cp *ConnectionPool) DeleteConnection(connection *Connection) {
 
 	defer cp.mu.Unlock()
 	cp.mu.Lock()
 
-	delete(cp.bufferChannelMap, bufferChannel)
+	delete(cp.ConnectionMap, connection)
 
 }
 
@@ -40,14 +45,13 @@ func (cp *ConnectionPool) Broadcast(buffer []byte) {
 	defer cp.mu.Unlock()
 	cp.mu.Lock()
 
-	for bufferChannel, _ := range cp.bufferChannelMap {
+	for connection := range cp.ConnectionMap {
 
-		clonedBuffer := make([]byte, 4096)
-		copy(clonedBuffer, buffer)
+		copy(connection.buffer, buffer)
 
 		select {
 
-		case bufferChannel <- clonedBuffer:
+		case connection.bufferChannel <- connection.buffer:
 
 		default:
 
@@ -59,8 +63,8 @@ func (cp *ConnectionPool) Broadcast(buffer []byte) {
 
 func NewConnectionPool() *ConnectionPool {
 
-	bufferChannelMap := make(map[chan []byte]struct{})
-	return &ConnectionPool{bufferChannelMap: bufferChannelMap}
+	connectionMap := make(map[*Connection]struct{})
+	return &ConnectionPool{ConnectionMap: connectionMap}
 
 }
 
@@ -126,21 +130,22 @@ func StreamRadio(r chi.Router, path string, filepath string) {
 
 		}
 
-		bufferChannel := make(chan []byte)
-		connPool.AddConnection(bufferChannel)
+		connection := &Connection{bufferChannel: make(chan []byte), buffer: make([]byte, 4096)}
+		connPool.AddConnection(connection)
 		log.Printf("%s has connected to the audio stream\n", r.Host)
 
 		for {
 
-			buf := <-bufferChannel
+			buf := <-connection.bufferChannel
 			if _, err := w.Write(buf); err != nil {
 
-				connPool.DeleteConnection(bufferChannel)
+				connPool.DeleteConnection(connection)
 				log.Printf("%s's connection to the audio stream has been closed\n", r.Host)
 				return
 
 			}
 			flusher.Flush()
+			clear(connection.buffer)
 
 		}
 
