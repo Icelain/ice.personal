@@ -193,6 +193,8 @@ Here we convert the audio content that we had earlier stored as a slice of bytes
 
 We empty out our buffer so it can be reused and create a ticker for 250 milliseconds so that the stream has an output delay and doesn't send too much data in small interval of time.
 
+EDIT: As mentioned in the comments, you can calculate and adjust the delay according to this formula: tick_duration = track_duration * buffer_size / aac_file_size
+
 In the inner loop:
 
 ```go
