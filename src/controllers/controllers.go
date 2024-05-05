@@ -39,6 +39,16 @@ func titalize(str string) string {
 
 }
 
+func HandleFavicon(r chi.Router) {
+
+	r.Get("/favicon.ico", func(w http.ResponseWriter, r *http.Request) {
+
+		http.Redirect(w,r,"/static/favicon.ico",http.StatusSeeOther)
+
+	})
+
+} 
+
 func HandleHTML(r chi.Router, paths []string, htmlpath string) {
 
 	for _, path := range paths {

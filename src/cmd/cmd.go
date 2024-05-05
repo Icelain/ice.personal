@@ -18,7 +18,8 @@ func Execute() {
 	mux := chi.NewRouter()
 
 	// handle controllers
-
+	
+	controllers.HandleFavicon(mux)
 	controllers.HandleHTML(mux, []string{"/", "/index"}, "./templates/index.html")
 
 	// handle static files
