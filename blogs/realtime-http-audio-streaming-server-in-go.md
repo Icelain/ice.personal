@@ -281,4 +281,4 @@ If we access localhost:8080 through a music player or a browser, we can listen t
 
 ## Conclusion
 
-We've successfully created our realtime audio streaming server. The code has been further optimized and is available on [Github](https://github.com/icelain/radio). A demo is available [here](https://ice.lqorg.com/music/stream)
+We've successfully created our realtime audio streaming server. The code has been further optimized and is available on [Github](https://github.com/icelain/radio). A demo is available [here](https://ice.computer/music/stream)
