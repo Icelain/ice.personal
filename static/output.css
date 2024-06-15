@@ -1116,10 +1116,6 @@ pre, code {
   --tw-prose-td-borders: var(--tw-prose-invert-td-borders);
 }
 
-.m-0 {
-  margin: 0px;
-}
-
 .m-4 {
   margin: 1rem;
 }
@@ -1175,18 +1171,6 @@ pre, code {
   flex-grow: 1;
 }
 
-.cursor-pointer {
-  cursor: pointer;
-}
-
-.list-none {
-  list-style-type: none;
-}
-
-.flex-row {
-  flex-direction: row;
-}
-
 .flex-col {
   flex-direction: column;
 }
@@ -1199,29 +1183,12 @@ pre, code {
   justify-content: center;
 }
 
-.rounded {
-  border-radius: 0.25rem;
-}
-
-.bg-neutral-700 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(64 64 64 / var(--tw-bg-opacity));
-}
-
-.p-0 {
-  padding: 0px;
-}
-
 .p-2 {
   padding: 0.5rem;
 }
 
 .text-center {
   text-align: center;
-}
-
-.font-medium {
-  font-weight: 500;
 }
 
 .italic {
@@ -1242,21 +1209,9 @@ pre, code {
   text-decoration-line: underline;
 }
 
-.duration-200 {
-  transition-duration: 200ms;
-}
-
-.hover\:bg-inherit:hover {
-  background-color: inherit;
-}
-
-.hover\:text-green-400:hover {
+.hover\:text-yellow-500:hover {
   --tw-text-opacity: 1;
-  color: rgb(74 222 128 / var(--tw-text-opacity));
-}
-
-.hover\:underline:hover {
-  text-decoration-line: underline;
+  color: rgb(234 179 8 / var(--tw-text-opacity));
 }
 
 .prose-a\:text-green-400 :is(:where(a):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
@@ -1324,11 +1279,6 @@ pre, code {
 
   .lg\:p-2 {
     padding: 0.5rem;
-  }
-
-  .lg\:px-2 {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
   }
 
   .lg\:text-lg {
