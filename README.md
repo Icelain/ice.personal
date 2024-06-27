@@ -1,2 +1,2 @@
 # ice.personal
-repo for my personal website: ice.lqorg.com
+repo for my personal website: ice.computer
