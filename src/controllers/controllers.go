@@ -139,16 +139,16 @@ func HandleBlog(router chi.Router, dir string) error {
 		// cmp function basically does the opposite of what its supposed to do
 		slices.SortFunc[[]Page, Page](pages.P, func(a, b Page) int {
 
-			at, err := time.Parse("Jan-1-2006", a.Date)
+			at, err := time.Parse("2006/01/02", a.Date)
 			if err != nil {
 
-				log.Fatal("time format in markdown is wrong")
+				log.Fatal("time format in markdown is wrong", err)
 
 			}
 
-			bt, err := time.Parse("Jan-1-2006", b.Date)
+			bt, err := time.Parse("2006/01/02", b.Date)
 			if err != nil {
-				log.Fatal("time format in markdown is wrong")
+				log.Fatal("time format in markdown is wrong", err)
 
 			}
 
