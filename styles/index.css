@@ -11,8 +11,16 @@
 
 	}
 
+	@font-face{
+
+		font-family: "vga8";
+		src: url("/static/vga8.woff") format("woff");
+
+	}
+
   html {
     font-family: "GeistFont";
+	font-family: "vga8","monospace";
   }
 
   body {
