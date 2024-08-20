@@ -19,8 +19,11 @@
 	}
 
   html {
-    font-family: "GeistFont";
-	font-family: "vga8","monospace";
+	font-family: "vga8";
+  }
+
+  code {
+	font-family: "vga8" !important;
   }
 
   body {

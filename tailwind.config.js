@@ -10,6 +10,11 @@ module.exports = {
 
 			}
 		},
+		fontFamily: {
+
+			'mono': ["vga8"],
+
+		},
 	},
 	plugins: [require('@tailwindcss/typography')],
 }

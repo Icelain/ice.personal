@@ -129,7 +129,7 @@ code,
 kbd,
 samp,
 pre {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: vga8;
   /* 1 */
   font-size: 1em;
   /* 2 */
@@ -447,8 +447,11 @@ video {
 }
 
 html {
-  font-family: "GeistFont";
-  font-family: "vga8","monospace";
+  font-family: "vga8";
+}
+
+code {
+  font-family: "vga8" !important;
 }
 
 body {
@@ -1236,6 +1239,10 @@ pre, code {
 
 .prose-pre\:text-left :is(:where(pre):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
   text-align: left;
+}
+
+.prose-pre\:font-mono :is(:where(pre):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  font-family: vga8;
 }
 
 .prose-li\:m-0 :is(:where(li):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
