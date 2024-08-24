@@ -8,18 +8,10 @@
         src: url("/static/GeistMono-Regular.woff2") format("woff2");
     }
 
-    @font-face {
-        font-family: "IBMPlex";
-        src: url("/static/IBMPlexMono-Regular.ttf") format("ttf");
-    }
-
     html {
         font-family: "GeistFont" !important;
     }
 
-    code {
-        font-family: "IBMPlex" !important;
-    }
 
     body {
         background-color: #222;
