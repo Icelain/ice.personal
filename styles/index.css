@@ -19,7 +19,7 @@
 	}
 
   html {
-	font-family: "GeistFont";
+	font-family: "GeistFont" !important;
   }
 
   code {
