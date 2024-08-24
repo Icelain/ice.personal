@@ -3,42 +3,32 @@
 @tailwind utilities;
 
 @layer base {
+    @font-face {
+        font-family: "GeistFont";
+        src: url("/static/GeistMono-Regular.woff2") format("woff2");
+    }
 
-	@font-face{
+    @font-face {
+        font-family: "IBMPlex";
+        src: url("/static/IBMPlexMono-Regular.ttf") format("ttf");
+    }
 
-	font-family: "GeistFont";
-	src: url("/static/GeistMono-Regular.woff2") format("woff2");
+    html {
+        font-family: "GeistFont" !important;
+    }
 
-	}
+    code {
+        font-family: "IBMPlex" !important;
+    }
 
-	@font-face{
+    body {
+        background-color: #222;
+    }
 
-		font-family: "vga8";
-		src: url("/static/vga8.woff") format("woff");
-
-	}
-
-  html {
-	font-family: "GeistFont" !important;
-  }
-
-  code {
-	font-family: "vga8" !important;
-  }
-
-  body {
-
-	background-color: #222;
-
-  }
-
-  pre, code {
-
-
-	white-space: pre-wrap !important;
-	overflow-wrap: break-word !important;
-	overflow: visible !important;
-
-  }
-
+    pre,
+    code {
+        white-space: pre-wrap !important;
+        overflow-wrap: break-word !important;
+        overflow: visible !important;
+    }
 }
