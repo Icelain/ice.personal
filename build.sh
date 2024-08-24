@@ -1,5 +1,5 @@
 cd src
-go build 
+GOOS=linux GOARCH=amd64 go build 
 strip iceblog
 mv iceblog ..
 echo "built the binary"

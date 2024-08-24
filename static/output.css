@@ -434,16 +434,16 @@ video {
   display: none;
 }
 
-@font-face{
+@font-face {
   font-family: "GeistFont";
 
   src: url("/static/GeistMono-Regular.woff2") format("woff2");
 }
 
-@font-face{
-  font-family: "vga8";
+@font-face {
+  font-family: "IBMPlex";
 
-  src: url("/static/vga8.woff") format("woff");
+  src: url("/static/IBMPlexMono-Regular.ttf") format("ttf");
 }
 
 html {
@@ -451,14 +451,15 @@ html {
 }
 
 code {
-  font-family: "vga8" !important;
+  font-family: "IBMPlex" !important;
 }
 
 body {
   background-color: #222;
 }
 
-pre, code {
+pre,
+    code {
   white-space: pre-wrap !important;
   overflow-wrap: break-word !important;
   overflow: visible !important;
