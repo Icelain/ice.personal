@@ -1,52 +1,34 @@
-<!DOCTYPE HTML lang="en">
-
+<!DOCTYPE HTML>
+<html lang="en">
 <head>
-
-	<title> Blogs </title>
+	<title>Blogs</title>
 	<link href="/static/output.css" rel="stylesheet">
-
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-
-<body class="h-screen">
-	<div class="flex flex-col justify-center items-center flex-grow lg:text-xl sm:text-5xl md:text-5xl">
-
-		<p class="lg:p-2 sm:p-5 text-green-500">Blogs~</p>
-
-	</div>
-
-	<div
-		class="flex flex-col justify-center md:text-4xl sm:text-4xl lg:text-lg items-center flex-grow lg:h-[calc(100vh-88px)] sm:h-[calc(100vh-90px)]">
-
-		<ul>
-
+<body class="min-h-screen flex flex-col">
+	<header class="py-4 lg:text-lg sm:text-2xl md:text-xl">
+		<p class="text-center text-yellow-500">Blogs~</p>
+	</header>
+	<main class="flex-grow flex items-center justify-center overflow-y-auto py-8">
+		<ul class="max-w-2xl w-full px-4 space-y-4 md:text-lg sm:text-xl lg:text-base">
 			{{range .P}}
-
-			<li class="my-2 justify-center items-center hover:text-yellow-500 underline lg:leading-4"> <a class="p-2 inline-block" href="/blog/{{.DashedTitle}}">
-					{{.Date}}
-					:: {{.Title}}</a> </li>
-
+			<li class="hover:text-yellow-500 underline lg:leading-6 text-center"> 
+				<a class="inline-block" href="/blog/{{.DashedTitle}}">
+					<span class="block text-sm text-gray-400">{{.Date}}</span>
+					<span class="block">{{.Title}}</span>
+				</a> 
+			</li>
 			{{end}}
-
 		</ul>
-
-	</div>
-
-	<div class="flex flex-col justify-center items-center flex-grow lg:text-xl sm:text-5xl md:text-5xl">
-
-		<p class="lg:p-2 sm:p-5 text-green-500 underline"><a href="/">Back home</a></p>
-
-	</div>
-
-
+	</main>
+	<footer class="py-4 lg:text-lg sm:text-xl md:text-lg">
+		<p class="text-center text-yellow-500 underline"><a href="/">Back home</a></p>
+	</footer>
 	<style>
-		li {
-
+		body {
 			color: #fafafa;
-
+			background-color: #000000;
 		}
-
 	</style>
-
 </body>
-
 </html>

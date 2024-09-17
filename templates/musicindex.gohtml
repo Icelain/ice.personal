@@ -1,87 +1,48 @@
-<!DOCTYPE HTML lang="en">
-
+<!DOCTYPE HTML>
+<html lang="en" class="bg-black text-white">
 <head>
-
-	<title> Music </title>
+	<title>Music</title>
 	<link href="/static/output.css" rel="stylesheet">
-
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-
-<body class="h-screen">
-	<div class="flex flex-col justify-center items-center flex-grow lg:text-xl sm:text-5xl md:text-5xl">
-
-		<p class="lg:p-2 sm:p-5 text-green-500">Music~</p>
-
+<body class="min-h-screen flex flex-col justify-between bg-black text-white">
+	<div class="flex flex-col justify-center items-center flex-grow lg:text-lg sm:text-2xl md:text-xl">
+		<p class="lg:p-2 sm:p-3 text-yellow-500">Music~</p>
 	</div>
-
 	<div
-		class="flex flex-col justify-center items-center flex-grow lg:text-lg lg:leading-4 md:text-4xl sm:text-4xl lg:h-[calc(100vh-88px)] sm:h-[calc(100vh-90px)]">
-
-		<ul>
-
-
-			<li class="my-2 underline hover:text-yellow-500"> <a class="inline-block p-2" href="/music/stream">
-
-					Internet Radio
-
-				</a> </li>
-
-			<li class="my-2 underline hover:text-yellow-500"> <a class="inline-block p-2"
-					href="https://open.spotify.com/artist/1bWx8OEY8rvxUuw1F2vavp?si=5QDkaQoWRKaeF7Q7vtAsRg">
-
-					Spotify
-
-				</a> </li>
-
-			<li class="my-2 underline hover:text-yellow-500"> <a class="inline-block p-2"
-					href="https://music.apple.com/us/artist/lqx/1671856240">
-
-					Apple Music
-
-				</a> </li>
-
-			<li class="my-2 underline hover:text-yellow-500"> <a class="inline-block p-2"
-					href="https://soundcloud.com/lqxmusic">
-
-					Soundcloud
-
-				</a> </li>
-
-			<li class="my-2 underline hover:text-yellow-500"> <a class="inline-block p-2"
-					href="https://music.amazon.com/artists/B0BVRRGLYW/lqx">
-
-					Amazon Prime Music
-
-				</a> </li>
-
-			<li class="my-2 underline hover:text-yellow-500"> <a class="inline-block p-2"
-					href="https://www.deezer.com/en/artist/201507857">
-
-					Deezer
-
-				</a> </li>
-
-
+		class="flex flex-col justify-center items-center flex-grow lg:text-base md:text-lg sm:text-xl lg:leading-6 lg:h-[calc(100vh-88px)] sm:h-[calc(100vh-90px)]">
+		<ul class="space-y-3">
+			<li class="underline hover:text-yellow-500"> 
+				<a class="inline-block p-1" href="/music/stream">Internet Radio</a> 
+			</li>
+			<li class="underline hover:text-yellow-500"> 
+				<a class="inline-block p-1" href="https://open.spotify.com/artist/1bWx8OEY8rvxUuw1F2vavp?si=5QDkaQoWRKaeF7Q7vtAsRg">Spotify</a> 
+			</li>
+			<li class="underline hover:text-yellow-500"> 
+				<a class="inline-block p-1" href="https://music.apple.com/us/artist/lqx/1671856240">Apple Music</a> 
+			</li>
+			<li class="underline hover:text-yellow-500"> 
+				<a class="inline-block p-1" href="https://soundcloud.com/lqxmusic">Soundcloud</a> 
+			</li>
+			<li class="underline hover:text-yellow-500"> 
+				<a class="inline-block p-1" href="https://music.amazon.com/artists/B0BVRRGLYW/lqx">Amazon Prime Music</a> 
+			</li>
+			<li class="underline hover:text-yellow-500"> 
+				<a class="inline-block p-1" href="https://www.deezer.com/en/artist/201507857">Deezer</a> 
+			</li>
 		</ul>
-
 	</div>
-
-	<div class="flex flex-col justify-center items-center flex-grow lg:text-xl sm:text-5xl md:text-5xl">
-
-		<p class="lg:p-2 sm:p-5 text-green-500 underline"><a href="/">Back home</a></p>
-
+	<div class="flex flex-col justify-center items-center flex-grow lg:text-base sm:text-lg md:text-base">
+		<p class="lg:p-2 sm:p-3 text-yellow-500 underline"><a href="/">Back home</a></p>
 	</div>
-
-
 	<style>
-		li {
-
-			color: #fafafa;
-
+		html, body {
+			background-color: #000000;
+			color: #ffffff;
 		}
-
+		li {
+			color: #fafafa;
+		}
 	</style>
-
 </body>
-
 </html>

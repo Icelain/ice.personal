@@ -4,17 +4,28 @@
 
 @layer base {
     @font-face {
-        font-family: "GeistFont";
-        src: url("/static/GeistMono-Regular.woff2") format("woff2");
+        font-family: "Iosevka";
+        src: url("/static/iosevka.woff2") format("woff2");
+    }
+
+    @font-face {
+        font-family: "Geist";
+        src: url("/static/Geist-Regular.woff2") format("woff2");
     }
 
     html {
-        font-family: "GeistFont" !important;
+        font-family: "Geist" !important;
+    }
+
+    code {
+		
+		font-family: "Iosevka" !important;
+
     }
 
 
-    body {
-        background-color: #222;
+    html {
+        background-color: "#000000" !important;
     }
 
     pre,
