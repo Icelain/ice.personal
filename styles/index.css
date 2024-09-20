@@ -10,7 +10,7 @@
 
     @font-face {
         font-family: "Geist";
-        src: url("/static/Geist-Regular.woff2") format("woff2");
+        src: url("/static/GeistMono-Regular.woff2") format("woff2");
     }
 
     html {
