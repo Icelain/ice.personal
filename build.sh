@@ -1,6 +1,6 @@
 cd src
 GOOS=linux GOARCH=amd64 go build
-GOOS=linux GOARCH=amd64 go build -o iceblogarm
+GOOS=linux GOARCH=arm64 go build -o iceblogarm
 strip iceblog
 mv iceblog ..
 mv iceblogarm ..
