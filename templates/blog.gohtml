@@ -6,13 +6,13 @@
 	<link href="/static/prism.css" type="text/css" rel="stylesheet">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body class="prose sm:text-base md:text-sm lg:text-base prose-neutral prose-h1:text-gray-400 prose-invert prose-a:text-yellow-500 flex flex-col h-screen w-full items-center my-4 prose-pre:text-left prose-pre:whitespace-pre-wrap text-center prose-pre:font-mono max-w-prose text-white">
-	<p class="my-1 text-sm"><a href="/blog" class="text-yellow-500">Back to blogs</a></p>
-	<p class="mt-1 mb-6 text-sm"><a href="/" class="text-yellow-500">Back home</a></p>
-	<p class="mb-4 italic text-sm"> {{ .Date }} </p>
-	{{.Content}}
+<body class="prose prose-xs xs:text-xs sm:text-xs md:text-sm lg:text-sm prose-neutral prose-h1:text-gray-400 prose-invert prose-a:text-yellow-500 flex flex-col h-screen w-full items-center my-4 prose-pre:text-left prose-pre:whitespace-pre-wrap text-center prose-pre:font-mono max-w-prose text-white">
+	<p class="my-1 text-xs sm:text-xs md:text-sm"><a href="/blog" class="text-yellow-500">Back to blogs</a></p>
+	<p class="mt-1 mb-6 text-xs sm:text-xs md:text-sm"><a href="/" class="text-yellow-500">Back home</a></p>
+	<p class="mb-4 italic text-xs sm:text-xs md:text-sm"> {{ .Date }} </p>
+	<div class="text-xs sm:text-xs md:text-sm">
+		{{.Content}}
+	</div>
 	<script src="/static/prism.js"></script>
-
 </body>
-
 </html>
