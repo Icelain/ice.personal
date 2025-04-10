@@ -4,8 +4,8 @@
 
 @layer base {
     @font-face {
-        font-family: "Iosevka";
-        src: url("/static/iosevka.woff2") format("woff2");
+        font-family: "Commit";
+        src: url("/static/Commit.woff2") format("woff2");
     }
 
     @font-face {
@@ -14,12 +14,12 @@
     }
 
     html {
-        font-family: "Geist" !important;
+        font-family: "Commit" !important;
     }
 
     code {
 		
-		font-family: "Iosevka" !important;
+		font-family: "Geist" !important;
 
     }
 
