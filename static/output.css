@@ -567,11 +567,11 @@ video {
 }
 
 html {
-  font-family: "Commit" !important;
+  font-family: "Geist" !important;
 }
 
 code {
-  font-family: "Geist" !important;
+  font-family: "Commit" !important;
 }
 
 html {
@@ -1299,11 +1299,6 @@ pre,
   line-height: 1.25rem;
 }
 
-.text-xs {
-  font-size: 0.75rem;
-  line-height: 1rem;
-}
-
 .italic {
   font-style: italic;
 }
@@ -1466,11 +1461,6 @@ pre,
   .lg\:text-lg {
     font-size: 1.125rem;
     line-height: 1.75rem;
-  }
-
-  .lg\:text-sm {
-    font-size: 0.875rem;
-    line-height: 1.25rem;
   }
 
   .lg\:leading-6 {
