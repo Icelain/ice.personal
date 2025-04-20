@@ -4,8 +4,8 @@
 
 @layer base {
     @font-face {
-        font-family: "Commit";
-        src: url("/static/Commit.woff2") format("woff2");
+        font-family: "VGA";
+        src: url("/static/vga8.woff") format("woff");
     }
 
     @font-face {
@@ -19,7 +19,7 @@
 
     code {
 		
-		font-family: "Commit" !important;
+		font-family: "VGA" !important;
 
     }
 
