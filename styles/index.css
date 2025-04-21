@@ -4,8 +4,8 @@
 
 @layer base {
     @font-face {
-        font-family: "VGA";
-        src: url("/static/vga8.woff") format("woff");
+        font-family: "Agave";
+        src: url("/static/agave.woff2") format("woff2");
     }
 
     @font-face {
@@ -17,9 +17,9 @@
         font-family: "Geist" !important;
     }
 
-    code {
+    code, pre {
 		
-		font-family: "VGA" !important;
+	font-family: "Agave" !important;
 
     }
 

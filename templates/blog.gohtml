@@ -1,18 +1,41 @@
 <!DOCTYPE html>
-<html class="flex flex-col items-center h-screen w-screen p-2 bg-black">
+<html class="min-h-screen" style="background-color: #0d0d0d;">
 <head>
     <title>{{ .Title }}</title>
     <link href="/static/output.css" type="text/css" rel="stylesheet">
     <link href="/static/prism.css" type="text/css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .prose-headings\:text-warm-peach h1,
+        .prose-headings\:text-warm-peach h2,
+        .prose-headings\:text-warm-peach h3,
+        .prose-headings\:text-warm-peach h4,
+        .prose-headings\:text-warm-peach h5,
+        .prose-headings\:text-warm-peach h6 {
+            color: #ffe6d8;
+        }
+    </style>
 </head>
-<body class="prose prose-neutral prose-h1:text-gray-400 prose-invert prose-a:text-yellow-500 flex flex-col h-screen w-full items-center my-4 prose-pre:text-left prose-pre:whitespace-pre-wrap text-center prose-pre:font-mono max-w-prose text-white">
-    <p class="my-1 text-sm sm:text-xs"><a href="/blog" class="text-yellow-500">Back to blogs</a></p>
-    <p class="mt-1 mb-6 text-sm sm:text-xs"><a href="/" class="text-yellow-500">Back home</a></p>
-    <p class="mb-4 italic text-sm sm:text-xs"> {{ .Date }} </p>
-    <div class="text-sm sm:text-xs md:text-sm">
-        {{.Content}}
+<body class="flex flex-col items-center min-h-screen w-full text-white px-4 md:px-6" style="background-color: #0d0d0d;">
+    <div class="w-full max-w-prose mx-auto my-8">
+        <div class="flex justify-between mb-4">
+            <a href="/blog" class="text-yellow-500 text-sm hover:underline">Back to blogs</a>
+            <a href="/" class="text-yellow-500 text-sm hover:underline">Back home</a>
+        </div>
+        
+        <div class="italic text-gray-400 text-sm mb-6">{{ .Date }}</div>
+        
+        <main class="prose prose-invert prose-a:text-yellow-500 prose-headings:text-warm-peach
+                     prose-pre:text-left prose-pre:whitespace-pre-wrap max-w-none
+                     text-base md:text-base">
+            {{.Content}}
+        </main>
     </div>
+    
+    <footer class="w-full max-w-prose mx-auto mt-auto mb-6 text-center text-gray-500 text-sm">
+        <!-- Optional footer content -->
+    </footer>
+    
     <script src="/static/prism.js"></script>
 </body>
 </html>
