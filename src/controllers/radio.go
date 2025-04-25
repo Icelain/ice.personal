@@ -29,6 +29,7 @@ type ConnectionPool struct {
 	mu            sync.Mutex
 }
 
+// Add connection to pool
 func (cp *ConnectionPool) AddConnection(connection *Connection) {
 
 	defer cp.mu.Unlock()
@@ -38,6 +39,7 @@ func (cp *ConnectionPool) AddConnection(connection *Connection) {
 
 }
 
+// Delete connection from pool
 func (cp *ConnectionPool) DeleteConnection(connection *Connection) {
 
 	defer cp.mu.Unlock()
