@@ -11,7 +11,7 @@ import (
 
 )
 
-// render markdown into html
+// Render markdown into html
 func Render(mdstring string) string {
 
 	extensions := parser.CommonExtensions | parser.AutoHeadingIDs | parser.NoEmptyLineBeforeBlock
