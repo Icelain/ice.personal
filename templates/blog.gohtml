@@ -3,7 +3,7 @@
 <head>
 	<title>{{.Title}} - Blog</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+	<link href="/static/prism.css" type="text/css" rel="stylesheet">
 	<style>
 		@font-face {
 			font-family: 'Geist Mono';
@@ -29,7 +29,7 @@
 			background-color: #0d0d0d;
 			color: #ffffff;
 			font-family: 'Geist Mono', monospace;
-			font-size: 14px;
+			font-size: 16px;
 			line-height: 1.6;
 			min-height: 100vh;
 		}
@@ -84,37 +84,35 @@
 		}
 		
 		.container {
-			max-width: 800px;
+			max-width: 900px;
 			margin: 0 auto;
-			padding: 20px;
+			padding: 0 20px;
 			flex: 1;
 		}
 		
 		.post-header {
 			text-align: center;
-			margin-bottom: 40px;
+			margin: 40px 0;
 			padding-bottom: 20px;
 			border-bottom: 1px solid #333;
 		}
 		
 		.post-title {
 			color: #fabd2f;
-			font-size: 24px;
+			font-size: 28px;
 			font-weight: normal;
-			margin-bottom: 10px;
+			margin-bottom: 15px;
 			font-family: 'Agave', monospace;
 			word-wrap: break-word;
+			line-height: 1.2;
 		}
 		
 		.post-meta {
-			font-size: 12px;
+			font-size: 14px;
 			color: #8ec07c;
 		}
 		
 		.post-content {
-			background-color: #111;
-			padding: 30px;
-			border-radius: 4px;
 			line-height: 1.7;
 			word-wrap: break-word;
 			overflow-wrap: break-word;
@@ -129,17 +127,23 @@
 			color: #fabd2f;
 			font-family: 'Agave', monospace;
 			font-weight: normal;
-			margin: 30px 0 15px 0;
+			margin: 40px 0 20px 0;
 			line-height: 1.3;
 		}
 		
-		.post-content h1 { font-size: 20px; }
-		.post-content h2 { font-size: 18px; }
-		.post-content h3 { font-size: 16px; }
-		.post-content h4 { font-size: 15px; }
+		.post-content h1:first-child,
+		.post-content h2:first-child,
+		.post-content h3:first-child {
+			margin-top: 0;
+		}
+		
+		.post-content h1 { font-size: 24px; }
+		.post-content h2 { font-size: 22px; }
+		.post-content h3 { font-size: 20px; }
+		.post-content h4 { font-size: 18px; }
 		
 		.post-content p {
-			margin-bottom: 20px;
+			margin-bottom: 25px;
 			color: #ffffff;
 		}
 		
@@ -155,100 +159,46 @@
 		.post-content code {
 			background-color: #222;
 			color: #fe8019;
-			padding: 2px 4px;
-			border-radius: 2px;
+			padding: 3px 6px;
+			border-radius: 3px;
 			font-family: 'Agave', monospace;
-			font-size: 12px;
+			font-size: 14px;
 		}
 		
 		.post-content pre {
-			background-color: #1d1f21 !important;
-			padding: 15px;
-			border-radius: 4px;
+			background-color: #1a1a1a;
+			padding: 20px;
+			border-radius: 6px;
 			overflow-x: auto;
-			margin: 20px 0;
-			border-left: 3px solid #8ec07c;
-			font-size: 13px;
+			margin: 25px 0;
+			border-left: 4px solid #8ec07c;
+			font-size: 14px;
 		}
 		
 		.post-content pre code {
-			background: none !important;
+			background: none;
 			padding: 0;
-			color: inherit !important;
-		}
-		
-		/* Override Prism theme to match our colors */
-		.token.comment,
-		.token.prolog,
-		.token.doctype,
-		.token.cdata {
-			color: #999 !important;
-		}
-		
-		.token.punctuation {
-			color: #ccc !important;
-		}
-		
-		.token.property,
-		.token.tag,
-		.token.boolean,
-		.token.number,
-		.token.constant,
-		.token.symbol,
-		.token.deleted {
-			color: #fe8019 !important;
-		}
-		
-		.token.selector,
-		.token.attr-name,
-		.token.string,
-		.token.char,
-		.token.builtin,
-		.token.inserted {
-			color: #8ec07c !important;
-		}
-		
-		.token.operator,
-		.token.entity,
-		.token.url,
-		.language-css .token.string,
-		.style .token.string {
-			color: #fabd2f !important;
-		}
-		
-		.token.atrule,
-		.token.attr-value,
-		.token.keyword {
-			color: #d3869b !important;
-		}
-		
-		.token.function,
-		.token.class-name {
-			color: #83a598 !important;
-		}
-		
-		.token.regex,
-		.token.important,
-		.token.variable {
-			color: #fb4934 !important;
+			color: inherit;
 		}
 		
 		.post-content blockquote {
-			border-left: 3px solid #fabd2f;
-			padding-left: 15px;
-			margin: 20px 0;
+			border-left: 4px solid #fabd2f;
+			padding: 20px;
+			margin: 25px 0;
+			background-color: rgba(250, 189, 47, 0.05);
 			color: #d3869b;
 			font-style: italic;
+			border-radius: 0 6px 6px 0;
 		}
 		
 		.post-content ul,
 		.post-content ol {
-			margin: 20px 0;
-			padding-left: 20px;
+			margin: 25px 0;
+			padding-left: 25px;
 		}
 		
 		.post-content li {
-			margin-bottom: 8px;
+			margin-bottom: 10px;
 			color: #ffffff;
 		}
 		
@@ -280,6 +230,10 @@
 		}
 		
 		@media (max-width: 768px) {
+			html, body {
+				font-size: 15px;
+			}
+			
 			.header-content {
 				flex-direction: column;
 				align-items: flex-start;
@@ -287,74 +241,98 @@
 			}
 			
 			.container {
-				padding: 10px;
-			}
-			
-			.post-content {
-				padding: 15px;
-			}
-			
-			.post-title {
-				font-size: 18px;
-			}
-			
-			.post-content h1 { font-size: 16px; }
-			.post-content h2 { font-size: 15px; }
-			.post-content h3 { font-size: 14px; }
-			.post-content h4 { font-size: 13px; }
-			
-			.post-content pre {
-				padding: 10px;
-				font-size: 12px;
-				margin: 15px -5px;
+				padding: 0 15px;
 			}
 			
 			.post-header {
-				margin-bottom: 25px;
-				padding-bottom: 15px;
+				margin: 30px 0;
+			}
+			
+			.post-title {
+				font-size: 22px;
+			}
+			
+			.post-meta {
+				font-size: 13px;
+			}
+			
+			.post-content h1 { font-size: 20px; }
+			.post-content h2 { font-size: 18px; }
+			.post-content h3 { font-size: 16px; }
+			.post-content h4 { font-size: 15px; }
+			
+			.post-content pre {
+				padding: 15px;
+				margin: 20px -5px;
+				border-radius: 4px;
+				font-size: 13px;
+			}
+			
+			.post-content blockquote {
+				margin: 20px -5px;
+				padding: 15px;
 			}
 		}
 		
 		@media (max-width: 480px) {
-			.container {
-				padding: 5px;
+			html, body {
+				font-size: 14px;
 			}
 			
-			.post-content {
-				padding: 12px;
-				border-radius: 0;
+			.container {
+				padding: 0 10px;
+			}
+			
+			.post-header {
+				margin: 20px 0;
 			}
 			
 			.post-title {
-				font-size: 16px;
-				line-height: 1.2;
+				font-size: 18px;
+				margin-bottom: 10px;
 			}
 			
-			.post-content {
-				font-size: 13px;
+			.post-meta {
+				font-size: 12px;
 			}
 			
-			.post-content h1 { font-size: 15px; }
-			.post-content h2 { font-size: 14px; }
-			.post-content h3 { font-size: 13px; }
-			.post-content h4 { font-size: 12px; }
+			.post-content h1 { font-size: 18px; }
+			.post-content h2 { font-size: 16px; }
+			.post-content h3 { font-size: 15px; }
+			.post-content h4 { font-size: 14px; }
+			
+			.post-content p {
+				margin-bottom: 20px;
+			}
 			
 			.post-content pre {
-				padding: 8px;
-				font-size: 11px;
-				margin: 15px -8px;
+				padding: 12px;
+				margin: 15px -10px;
 				border-radius: 0;
+				font-size: 12px;
 			}
 			
 			.post-content code {
-				font-size: 11px;
+				font-size: 12px;
+				padding: 2px 4px;
+			}
+			
+			.post-content blockquote {
+				margin: 15px -10px;
+				padding: 12px;
+			}
+			
+			.post-content ul,
+			.post-content ol {
+				padding-left: 20px;
 			}
 			
 			.header-left {
 				gap: 8px;
 			}
 			
-			.header-left span {
+			.header-left span,
+			.header-left a {
 				font-size: 12px !important;
 			}
 		}
@@ -392,7 +370,6 @@
 		</div>
 	</div>
 	
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+	<script src="/static/prism.js"></script>
 </body>
 </html>
