@@ -1,51 +1,380 @@
-
 <!DOCTYPE html>
-<html class="flex flex-col items-center min-h-screen w-screen bg-black text-white">
+<html>
 <head>
-	<title>icelain's personal website</title>
-	<link href="/static/output.css" type="text/css" rel="stylesheet">
-	<link href="/static/prism.css" type="text/css" rel="stylesheet">
-	<link href="/blog" rel="preload">
-	<link href="/music" rel="preload">
-
+	<title>ice.computer</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body
-	class="prose sm:text-xl md:text-lg lg:text-base prose-invert prose-a:text-green-400 flex flex-col min-h-screen w-full items-center my-4 prose-pre:text-left prose-pre:whitespace-pre-wrap text-center prose-li:m-0 max-w-3xl">
-	
-	<h3 class="text-yellow-500 m-4 sm:text-2xl md:text-xl lg:text-lg">icelain's personal website</h3>	
-	<div class="flex flex-1 items-center flex-col justify-center lg:h-[calc(100vh-48px)] sm:h-[calc(100vh-90px)]">
-		<div class="flex flex-col justify-center items-center flex-grow md:text-lg sm:text-xl lg:text-base not-prose space-y-2">
-			<p><a class="text-gruvbox-pink hover:text-gruvbox-pink-light underline" href="mailto:icelain@ice.computer">Email</a></p>
-			<p><a class="text-orange-500 hover:text-orange-300 underline" href="https://x.com/icelainl">X/Twitter</a></p>
-			<p><a class="text-red-500 hover:text-red-300 underline" href="https://github.com/icelain">Github</a></p>
-			<p><a class="text-aqua-500 hover:text-aqua-300 underline" href="/music">Music</a></p>
-			<p><a class="text-blue-500 hover:text-blue-300 underline" href="/blog">Blog</a></p>
-		</div>
-	</div>
 	<style>
+		@font-face {
+			font-family: 'Geist Mono';
+			src: url('https://ice.computer/static/GeistMono-Regular.woff2') format('woff2');
+			font-weight: normal;
+			font-style: normal;
+		}
+		
+		@font-face {
+			font-family: 'Agave';
+			src: url('https://ice.computer/static/agave.woff2') format('woff2');
+			font-weight: normal;
+			font-style: normal;
+		}
+		
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		
 		html, body {
 			background-color: #0d0d0d;
+			color: #ffffff;
+			font-family: 'Geist Mono', monospace;
+			font-size: 14px;
+			line-height: 1.4;
 		}
-		/* Custom Gruvbox colors for Tailwind */
-		.text-yellow-500 { color: #fabd2f; }
-		.hover\:text-yellow-500:hover { color: #f9dd56; }
-
-		.text-orange-500 { color: #fe8019; }
-		.hover\:text-orange-300:hover { color: #fd9354; }
-
-		.text-red-500 { color: #fb4934; }
-		.hover\:text-red-300:hover { color: #fd6f66; }
-
-		.text-aqua-500 { color: #8ec07c; }
-		.hover\:text-aqua-300:hover { color: #a6db96; }
-
-		.text-blue-500 { color: #83a598; }
-		.hover\:text-blue-300:hover { color: #a7c4d0; }
-
-		.text-gruvbox-pink { color: #d3869b; }
-		.hover\:text-gruvbox-pink-light:hover { color: #e1a0b1; }
-
+		
+		.header {
+			background-color: #fabd2f;
+			color: #000;
+			padding: 6px 0;
+			margin-bottom: 20px;
+		}
+		
+		.header-content {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 0 10px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			gap: 10px;
+		}
+		
+		.header-left {
+			display: flex;
+			align-items: center;
+			gap: 15px;
+		}
+		
+		.logo {
+			font-size: 16px;
+			font-weight: bold;
+			text-decoration: none;
+			color: #000;
+		}
+		
+		.header-right {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+		}
+		
+		.nav-link {
+			color: #000;
+			text-decoration: none;
+			font-size: 12px;
+			padding: 3px 6px;
+			border-radius: 2px;
+		}
+		
+		.nav-link:hover {
+			background-color: rgba(0, 0, 0, 0.1);
+		}
+		
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 10px;
+		}
+		
+		.section-header {
+			color: #fabd2f;
+			font-size: 16px;
+			font-weight: normal;
+			text-align: center;
+			margin: 30px 0 15px 0;
+			font-family: 'Agave', monospace;
+			display: block;
+			width: 100%;
+		}
+		
+		.profile-section {
+			background-color: #111;
+			border-radius: 4px;
+			margin-bottom: 20px;
+			overflow: hidden;
+		}
+		
+		.profile-item {
+			display: flex;
+			align-items: flex-start;
+			padding: 12px 16px;
+			border-bottom: 1px solid #222;
+			font-family: 'Geist Mono', monospace;
+			justify-content: center;
+		}
+		
+		.profile-item:last-child {
+			border-bottom: none;
+		}
+		
+		.profile-item:hover {
+			background-color: #1a1a1a;
+		}
+		
+		.vote {
+			width: 20px;
+			margin-right: 8px;
+			text-align: center;
+			flex-shrink: 0;
+			display: none;
+		}
+		
+		.upvote {
+			color: #8ec07c;
+			cursor: pointer;
+			font-size: 10px;
+		}
+		
+		.content {
+			flex: 1;
+			min-width: 0;
+			text-align: center;
+		}
+		
+		.title {
+			margin: 0;
+			font-size: 14px;
+			font-weight: normal;
+		}
+		
+		.title a {
+			color: #ffffff;
+			text-decoration: none;
+		}
+		
+		.title a:hover {
+			color: #fabd2f;
+		}
+		
+		.meta {
+			font-size: 11px;
+			color: #888;
+			margin-top: 2px;
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			flex-wrap: wrap;
+			justify-content: center;
+		}
+		
+		.meta a {
+			color: #888;
+			text-decoration: none;
+		}
+		
+		.meta a:hover {
+			color: #fabd2f;
+		}
+		
+		.description {
+			color: #8ec07c;
+		}
+		
+		.status {
+			color: #fe8019;
+		}
+		
+		.location {
+			color: #d3869b;
+		}
+		
+		.footer {
+			margin-top: 40px;
+			padding: 20px 0;
+			border-top: 1px solid #222;
+			text-align: center;
+			font-size: 11px;
+			color: #666;
+		}
+		
+		.footer a {
+			color: #8ec07c;
+			text-decoration: none;
+		}
+		
+		.footer a:hover {
+			color: #fabd2f;
+		}
+		
+		@media (max-width: 768px) {
+			.header-content {
+				flex-direction: column;
+				align-items: flex-start;
+				gap: 8px;
+			}
+			
+			.rank {
+				width: 25px;
+				margin-right: 8px;
+			}
+			
+			.vote {
+				width: 15px;
+				margin-right: 6px;
+			}
+			
+			.title {
+				font-size: 13px;
+			}
+			
+			.meta {
+				font-size: 10px;
+				gap: 6px;
+			}
+		}
 	</style>
+</head>
+<body>
+	<header class="header">
+		<div class="header-content">
+			<div class="header-left">
+				<span class="logo">ice.computer</span>
+				<span style="color: #666; font-size: 12px;">→</span>
+				<span style="font-size: 14px; font-weight: bold;">icelain</span>
+			</div>
+		</div>
+	</header>
+	
+	<div class="container">
+		<h2 class="section-header">Links</h2>
+		
+		<div class="profile-section">
+			<div class="profile-item">
+				<div class="content">
+					<h3 class="title">
+						<a href="https://x.com/icelainl" target="_blank" rel="noopener noreferrer">X / Twitter</a>
+					</h3>
+					<div class="meta">
+						<span class="description">thoughts and updates</span>
+						<span class="status">active</span>
+					</div>
+				</div>
+			</div>
+			
+			<div class="profile-item">
+				<div class="content">
+					<h3 class="title">
+						<a href="https://github.com/icelain" target="_blank" rel="noopener noreferrer">GitHub</a>
+					</h3>
+					<div class="meta">
+						<span class="description">code and projects</span>
+						<span class="status">building</span>
+					</div>
+				</div>
+			</div>
+			
+			<div class="profile-item">
+				<div class="content">
+					<h3 class="title">
+						<a href="/blog">Blog</a>
+					</h3>
+					<div class="meta">
+						<span class="description">writings and ideas</span>
+						<span class="status">occasional</span>
+					</div>
+				</div>
+			</div>
+			
+			<div class="profile-item">
+				<div class="content">
+					<h3 class="title">
+						<a href="/music">Music</a>
+					</h3>
+					<div class="meta">
+						<span class="description">sounds and experiments</span>
+						<span class="status">creative</span>
+					</div>
+				</div>
+			</div>
+			
+			<div class="profile-item">
+				<div class="content">
+					<h3 class="title">
+						<a href="mailto:icelain@ice.computer">Email</a>
+					</h3>
+					<div class="meta">
+						<span class="description">direct communication</span>
+						<span class="location">icelain@ice.computer</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<h2 class="section-header">Projects</h2>
+		
+		<div class="profile-section">
+			<div class="profile-item">
+				<div class="content">
+					<h3 class="title">
+						<a href="https://remcpy.ice.computer" target="_blank" rel="noopener noreferrer">remcpy.ice.computer</a>
+					</h3>
+					<div class="meta">
+						<span class="description">A minimal temp.sh clone</span>
+					</div>
+				</div>
+			</div>
+			
+			<div class="profile-item">
+				<div class="content">
+					<h3 class="title">
+						<a href="https://github.com/icelain/sirang" target="_blank" rel="noopener noreferrer">github.com/icelain/sirang</a>
+					</h3>
+					<div class="meta">
+						<span class="description">An experimental forward and reverse tcp tunnel in rust</span>
+					</div>
+				</div>
+			</div>
+			
+			<div class="profile-item">
+				<div class="content">
+					<h3 class="title">
+						<a href="https://mlnews.ice.computer" target="_blank" rel="noopener noreferrer">mlnews.ice.computer</a>
+					</h3>
+					<div class="meta">
+						<span class="description">Curated machine learning and AI news aggregator</span>
+					</div>
+				</div>
+			</div>
+			
+			<div class="profile-item">
+				<div class="content">
+					<h3 class="title">
+						<a href="https://github.com/python/cpython" target="_blank" rel="noopener noreferrer">CPython Contributor</a>
+					</h3>
+					<div class="meta">
+						<span class="description">Contributing to Python core development</span>
+						<span class="status">open source</span>
+					</div>
+				</div>
+			</div>
+			
+			<div class="profile-item">
+				<div class="content">
+					<h3 class="title">
+						<a href="https://github.com/ollama/ollama" target="_blank" rel="noopener noreferrer">Ollama Contributor</a>
+					</h3>
+					<div class="meta">
+						<span class="description">Contributing to local LLM infrastructure</span>
+						<span class="status">open source</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="footer">
+			<p>@icelain 2025</p>
+		</div>
+	</div>
 </body>
 </html>

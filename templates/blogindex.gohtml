@@ -2,33 +2,213 @@
 <html lang="en">
 <head>
 	<title>Blogs</title>
-	<link href="/static/output.css" rel="stylesheet">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body class="min-h-screen flex flex-col">
-	<header class="py-4 lg:text-lg sm:text-2xl md:text-xl">
-		<p class="text-center text-yellow-500">Blogs~</p>
-	</header>
-	<main class="flex-grow flex items-center justify-center overflow-y-auto py-8">
-		<ul class="max-w-2xl w-full px-4 space-y-4 md:text-lg sm:text-xl lg:text-base">
-			{{range .P}}
-			<li class="hover:text-yellow-500 underline lg:leading-6 text-center"> 
-				<a class="inline-block" href="/blog/{{.DashedTitle}}">
-					<span class="block text-sm text-gray-400">{{.Date}}</span>
-					<span class="block">{{.Title}}</span>
-				</a> 
-			</li>
-			{{end}}
-		</ul>
-	</main>
-	<footer class="py-4 lg:text-lg sm:text-xl md:text-lg">
-		<p class="text-center text-yellow-500 underline"><a href="/">Back home</a></p>
-	</footer>
 	<style>
+		@font-face {
+			font-family: 'Geist Mono';
+			src: url('https://ice.computer/static/GeistMono-Regular.woff2') format('woff2');
+			font-weight: normal;
+			font-style: normal;
+		}
+		
+		@font-face {
+			font-family: 'Agave';
+			src: url('https://ice.computer/static/agave.woff2') format('woff2');
+			font-weight: normal;
+			font-style: normal;
+		}
+		
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		
+		html, body {
+			background-color: #0d0d0d;
+			color: #ffffff;
+			font-family: 'Geist Mono', monospace;
+			font-size: 14px;
+			line-height: 1.4;
+			min-height: 100vh;
+		}
+		
+		.header {
+			background-color: #fabd2f;
+			color: #000;
+			padding: 6px 0;
+			margin-bottom: 20px;
+		}
+		
+		.header-content {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 0 10px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			gap: 10px;
+		}
+		
+		.header-left {
+			display: flex;
+			align-items: center;
+			gap: 15px;
+		}
+		
+		.logo {
+			font-size: 16px;
+			font-weight: bold;
+			text-decoration: none;
+			color: #000;
+		}
+		
+		.header-right {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+		}
+		
+		.nav-link {
+			color: #000;
+			text-decoration: none;
+			font-size: 12px;
+			padding: 3px 6px;
+			border-radius: 2px;
+		}
+		
+		.nav-link:hover {
+			background-color: rgba(0, 0, 0, 0.1);
+		}
+		
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 10px;
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+		}
+		
+		.section-header {
+			color: #fabd2f;
+			font-size: 16px;
+			font-weight: normal;
+			text-align: center;
+			margin: 30px 0 15px 0;
+			font-family: 'Agave', monospace;
+			display: block;
+			width: 100%;
+		}
+		
+		.blog-list {
+			background-color: #111;
+			border-radius: 4px;
+			overflow: hidden;
+			max-width: 800px;
+			margin: 0 auto;
+		}
+		
+		.blog-item {
+			display: flex;
+			align-items: flex-start;
+			padding: 12px 16px;
+			border-bottom: 1px solid #222;
+			font-family: 'Geist Mono', monospace;
+			justify-content: center;
+		}
+		
+		.blog-item:last-child {
+			border-bottom: none;
+		}
+		
+		.blog-item:hover {
+			background-color: #1a1a1a;
+		}
+		
+		.content {
+			flex: 1;
+			min-width: 0;
+			text-align: center;
+		}
+		
+		.title {
+			margin: 0;
+			font-size: 14px;
+			font-weight: normal;
+		}
+		
+		.title a {
+			color: #ffffff;
+			text-decoration: none;
+		}
+		
+		.title a:hover {
+			color: #fabd2f;
+		}
+		
+		.meta {
+			font-size: 11px;
+			color: #8ec07c;
+			margin-top: 2px;
+			text-align: center;
+		}
+		
 		body {
-			color: #fafafa;
-			background-color: #0d0d0d !important;
+			display: flex;
+			flex-direction: column;
+			min-height: 100vh;
+		}
+		
+		@media (max-width: 768px) {
+			.header-content {
+				flex-direction: column;
+				align-items: flex-start;
+				gap: 8px;
+			}
+			
+			.title {
+				font-size: 13px;
+			}
+			
+			.meta {
+				font-size: 10px;
+			}
 		}
 	</style>
+</head>
+<body>
+	<header class="header">
+		<div class="header-content">
+			<div class="header-left">
+				<a href="/" class="logo">ice.computer</a>
+				<span style="color: #666; font-size: 12px;">→</span>
+				<span style="font-size: 14px; font-weight: bold;">Blog</span>
+			</div>
+			<div class="header-right">
+				<a href="/" class="nav-link">home</a>
+			</div>
+		</div>
+	</header>
+	
+	<div class="container">
+		<h2 class="section-header">Posts</h2>
+		
+		<div class="blog-list">
+			{{range .P}}
+			<div class="blog-item">
+				<div class="content">
+					<h3 class="title">
+						<a href="/blog/{{.DashedTitle}}">{{.Title}}</a>
+					</h3>
+					<div class="meta">
+						{{.Date}}
+					</div>
+				</div>
+			</div>
+			{{end}}
+		</div>
+	</div>
 </body>
 </html>
