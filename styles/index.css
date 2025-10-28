@@ -9,12 +9,12 @@
     }
 
     @font-face {
-        font-family: "Geist";
-        src: url("/static/GeistMono-Regular.woff2") format("woff2");
+        font-family: "Fira Code";
+        src: url("/static/firacode.ttf") format("ttf");
     }
 
     html {
-        font-family: "Geist" !important;
+        font-family: "Fira Code" !important;
     }
 
     code, pre {

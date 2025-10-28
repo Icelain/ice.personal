@@ -1,23 +1,20 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-	<title>Music</title>
+	<title>Music — icelain</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<style>
+
 		@font-face {
-			font-family: 'Geist Mono';
-			src: url('https://ice.computer/static/GeistMono-Regular.woff2') format('woff2');
-			font-weight: normal;
-			font-style: normal;
-		}
-		
-		@font-face {
-			font-family: 'Agave';
-			src: url('https://ice.computer/static/agave.woff2') format('woff2');
-			font-weight: normal;
-			font-style: normal;
-		}
-		
+	        font-family: "Agave";
+	        src: url("/static/agave.woff2") format("woff2");
+	    }
+
+	    @font-face {
+	        font-family: "Fira Code";
+	        src: url("/static/firacode.ttf") format("truetype");
+	    }
+				
 		* {
 			margin: 0;
 			padding: 0;
@@ -25,98 +22,105 @@
 		}
 		
 		html, body {
-			background-color: #0d0d0d;
-			color: #ffffff;
-			font-family: 'Geist Mono', monospace;
+			background-color: #101010;
+			color: #FFFFFF;
+			font-family: 'Fira Code';
 			font-size: 14px;
-			line-height: 1.4;
+			line-height: 1.6;
 			min-height: 100vh;
+			font-weight: 400;
+		}
+
+		::selection {
+			background: #232323;
+			color: #FFCFA8;
+		}
+
+		::-moz-selection {
+			background: #232323;
+			color: #FFCFA8;
 		}
 		
-		.header {
-			background-color: #fabd2f;
-			color: #000;
-			padding: 6px 0;
-			margin-bottom: 20px;
-		}
-		
-		.header-content {
-			max-width: 1200px;
-			margin: 0 auto;
-			padding: 0 10px;
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-			flex-wrap: wrap;
-			gap: 10px;
-		}
-		
-		.header-left {
-			display: flex;
-			align-items: center;
-			gap: 15px;
-		}
-		
-		.logo {
-			font-size: 16px;
-			font-weight: bold;
-			text-decoration: none;
-			color: #000;
-		}
-		
-		.header-right {
-			display: flex;
-			align-items: center;
-			gap: 10px;
-		}
-		
-		.nav-link {
-			color: #000;
-			text-decoration: none;
-			font-size: 12px;
-			padding: 3px 6px;
-			border-radius: 2px;
-		}
-		
-		.nav-link:hover {
-			background-color: rgba(0, 0, 0, 0.1);
-		}
-		
-		.container {
-			max-width: 1200px;
-			margin: 0 auto;
-			padding: 10px;
-			flex: 1;
+		body {
 			display: flex;
 			flex-direction: column;
 		}
 		
-		.section-header {
-			color: #fabd2f;
+		.nav {
+			padding: 20px 24px;
+			border-bottom: 1px solid #151515;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+		
+		.nav-left {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+		}
+		
+		.logo {
 			font-size: 16px;
-			font-weight: normal;
-			text-align: center;
-			margin: 30px 0 15px 0;
-			font-family: 'Agave', monospace;
-			display: block;
+			font-weight: 500;
+			text-decoration: none;
+			color: #FFCFA8;
+		}
+
+		.separator {
+			color: #505050;
+			font-size: 14px;
+		}
+
+		.page-title {
+			color: #A0A0A0;
+			font-size: 14px;
+			font-weight: 400;
+		}
+		
+		.nav-link {
+			color: #65737E;
+			text-decoration: none;
+			font-size: 13px;
+		}
+		
+		.nav-link:hover {
+			color: #FFCFA8;
+		}
+		
+		.container {
+			max-width: 700px;
+			margin: 0 auto;
+			padding: 40px 24px;
+			flex: 1;
 			width: 100%;
 		}
 		
+		.header-section {
+			margin-bottom: 48px;
+		}
+
+		h1 {
+			font-size: 28px;
+			font-weight: 500;
+			color: #FFCFA8;
+			margin-bottom: 8px;
+		}
+
+		.description {
+			color: #A0A0A0;
+			font-size: 14px;
+		}
+		
 		.music-list {
-			background-color: #111;
-			border-radius: 4px;
-			overflow: hidden;
-			max-width: 600px;
-			margin: 0 auto;
+			border: 1px solid #151515;
 		}
 		
 		.music-item {
-			display: flex;
-			align-items: flex-start;
-			padding: 12px 16px;
-			border-bottom: 1px solid #222;
-			font-family: 'Geist Mono', monospace;
-			justify-content: center;
+			padding: 18px;
+			border-bottom: 1px solid #151515;
+			position: relative;
+			background: #101010;
 		}
 		
 		.music-item:last-child {
@@ -124,156 +128,184 @@
 		}
 		
 		.music-item:hover {
-			background-color: #1a1a1a;
+			background: #FFCFA8;
+			padding-left: 22px;
 		}
-		
-		.content {
-			flex: 1;
-			min-width: 0;
-			text-align: center;
+
+		.music-item:hover .title a {
+			color: #101010;
+		}
+
+		.music-item:hover .meta {
+			color: #101010;
+		}
+
+		.music-item::before {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 0;
+			height: 100%;
+			background: #FFCFA8;
+		}
+
+		.music-item:hover::before {
+			width: 3px;
 		}
 		
 		.title {
-			margin: 0;
-			font-size: 14px;
-			font-weight: normal;
+			margin: 0 0 6px 0;
+			font-size: 15px;
+			font-weight: 500;
 		}
 		
 		.title a {
-			color: #ffffff;
+			color: #FFCFA8;
 			text-decoration: none;
 		}
 		
-		.title a:hover {
-			color: #fabd2f;
-		}
-		
 		.meta {
-			font-size: 11px;
-			color: #888;
-			margin-top: 2px;
+			font-size: 12px;
+			color: #65737E;
+		}
+
+		footer {
+			padding: 20px 24px;
+			border-top: 1px solid #151515;
 			text-align: center;
-		}
-		
-		.platform {
-			color: #8ec07c;
-		}
-		
-		.streaming {
-			color: #fe8019;
-		}
-		
-		.radio {
-			color: #d3869b;
-		}
-		
-		body {
-			display: flex;
-			flex-direction: column;
-			min-height: 100vh;
+			color: #505050;
+			font-size: 12px;
 		}
 		
 		@media (max-width: 768px) {
-			.header-content {
+			.nav {
+				padding: 16px;
 				flex-direction: column;
 				align-items: flex-start;
-				gap: 8px;
+				gap: 12px;
 			}
-			
-			.title {
+
+			.nav-left {
+				gap: 8px;
+				flex-wrap: wrap;
+			}
+
+			.logo {
+				font-size: 15px;
+			}
+
+			.page-title {
 				font-size: 13px;
 			}
 			
+			.container {
+				padding: 24px 16px;
+			}
+
+			.header-section {
+				margin-bottom: 32px;
+			}
+
+			h1 {
+				font-size: 22px;
+			}
+
+			.description {
+				font-size: 13px;
+			}
+			
+			.music-item {
+				padding: 16px;
+			}
+
+			.music-item:hover {
+				padding-left: 20px;
+			}
+			
+			.title {
+				font-size: 14px;
+			}
+			
 			.meta {
-				font-size: 10px;
+				font-size: 11px;
+			}
+		}
+
+		@media (max-width: 480px) {
+			.music-item {
+				padding: 14px;
+			}
+
+			.music-item:hover {
+				padding-left: 18px;
 			}
 		}
 	</style>
 </head>
 <body>
-	<header class="header">
-		<div class="header-content">
-			<div class="header-left">
-				<a href="/" class="logo">ice.computer</a>
-				<span style="color: #666; font-size: 12px;">→</span>
-				<span style="font-size: 14px; font-weight: bold;">Music</span>
-			</div>
-			<div class="header-right">
-				<a href="/" class="nav-link">home</a>
-			</div>
+	<nav class="nav">
+		<div class="nav-left">
+			<a href="/" class="logo">icelain</a>
+			<span class="separator">/</span>
+			<span class="page-title">music</span>
 		</div>
-	</header>
+		<a href="/" class="nav-link">← back to home</a>
+	</nav>
 	
 	<div class="container">
-		<h2 class="section-header">Platforms</h2>
+		<div class="header-section">
+			<h1>Music</h1>
+			<p class="description">Listen across platforms</p>
+		</div>
 		
 		<div class="music-list">
 			<div class="music-item">
-				<div class="content">
-					<h3 class="title">
-						<a href="/music/stream">Internet Radio</a>
-					</h3>
-					<div class="meta">
-						<span class="radio">live streaming</span>
-					</div>
-				</div>
+				<h3 class="title">
+					<a href="/music/stream">Internet Radio</a>
+				</h3>
+				<div class="meta">live streaming</div>
 			</div>
 			
 			<div class="music-item">
-				<div class="content">
-					<h3 class="title">
-						<a href="https://open.spotify.com/artist/1bWx8OEY8rvxUuw1F2vavp?si=5QDkaQoWRKaeF7Q7vtAsRg" target="_blank" rel="noopener noreferrer">Spotify</a>
-					</h3>
-					<div class="meta">
-						<span class="streaming">music streaming</span>
-					</div>
-				</div>
+				<h3 class="title">
+					<a href="https://open.spotify.com/artist/1bWx8OEY8rvxUuw1F2vavp?si=5QDkaQoWRKaeF7Q7vtAsRg" target="_blank" rel="noopener noreferrer">Spotify</a>
+				</h3>
+				<div class="meta">music streaming</div>
 			</div>
 			
 			<div class="music-item">
-				<div class="content">
-					<h3 class="title">
-						<a href="https://music.apple.com/us/artist/lqx/1671856240" target="_blank" rel="noopener noreferrer">Apple Music</a>
-					</h3>
-					<div class="meta">
-						<span class="streaming">music streaming</span>
-					</div>
-				</div>
+				<h3 class="title">
+					<a href="https://music.apple.com/us/artist/lqx/1671856240" target="_blank" rel="noopener noreferrer">Apple Music</a>
+				</h3>
+				<div class="meta">music streaming</div>
 			</div>
 			
 			<div class="music-item">
-				<div class="content">
-					<h3 class="title">
-						<a href="https://soundcloud.com/lqxmusic" target="_blank" rel="noopener noreferrer">Soundcloud</a>
-					</h3>
-					<div class="meta">
-						<span class="platform">audio platform</span>
-					</div>
-				</div>
+				<h3 class="title">
+					<a href="https://soundcloud.com/lqxmusic" target="_blank" rel="noopener noreferrer">Soundcloud</a>
+				</h3>
+				<div class="meta">audio platform</div>
 			</div>
 			
 			<div class="music-item">
-				<div class="content">
-					<h3 class="title">
-						<a href="https://music.amazon.com/artists/B0BVRRGLYW/lqx" target="_blank" rel="noopener noreferrer">Amazon Prime Music</a>
-					</h3>
-					<div class="meta">
-						<span class="streaming">music streaming</span>
-					</div>
-				</div>
+				<h3 class="title">
+					<a href="https://music.amazon.com/artists/B0BVRRGLYW/lqx" target="_blank" rel="noopener noreferrer">Amazon Prime Music</a>
+				</h3>
+				<div class="meta">music streaming</div>
 			</div>
 			
 			<div class="music-item">
-				<div class="content">
-					<h3 class="title">
-						<a href="https://www.deezer.com/en/artist/201507857" target="_blank" rel="noopener noreferrer">Deezer</a>
-					</h3>
-					<div class="meta">
-						<span class="streaming">music streaming</span>
-					</div>
-				</div>
+				<h3 class="title">
+					<a href="https://www.deezer.com/en/artist/201507857" target="_blank" rel="noopener noreferrer">Deezer</a>
+				</h3>
+				<div class="meta">music streaming</div>
 			</div>
 		</div>
 	</div>
+
+	<footer>
+		<p>icelain@ice.computer — 2025</p>
+	</footer>
 </body>
 </html>
