@@ -122,22 +122,34 @@
 			border-bottom: 1px solid #151515;
 			position: relative;
 			background: #101010;
+			display: block;
+			text-decoration: none;
+			color: inherit;
+			transition: all 0.2s ease;
 		}
 		
 		.blog-item:last-child {
 			border-bottom: none;
 		}
 		
-		.blog-item:hover {
+		.blog-item:hover,
+		.blog-item:focus {
 			background: #FFCFA8;
 			padding-left: 24px;
+			outline: none;
 		}
 
-		.blog-item:hover .title a {
+		.blog-item:focus {
+			box-shadow: inset 0 0 0 2px #FFCFA8;
+		}
+
+		.blog-item:hover .title-text,
+		.blog-item:focus .title-text {
 			color: #101010;
 		}
 
-		.blog-item:hover .meta {
+		.blog-item:hover .meta,
+		.blog-item:focus .meta {
 			color: #101010;
 		}
 
@@ -149,9 +161,11 @@
 			width: 0;
 			height: 100%;
 			background: #FFCFA8;
+			transition: width 0.2s ease;
 		}
 
-		.blog-item:hover::before {
+		.blog-item:hover::before,
+		.blog-item:focus::before {
 			width: 3px;
 		}
 		
@@ -161,7 +175,7 @@
 			font-weight: 500;
 		}
 		
-		.title a {
+		.title-text {
 			color: #FFCFA8;
 			text-decoration: none;
 		}
@@ -240,7 +254,8 @@
 				padding: 16px;
 			}
 
-			.blog-item:hover {
+			.blog-item:hover,
+			.blog-item:focus {
 				padding-left: 20px;
 			}
 			
@@ -258,7 +273,8 @@
 				padding: 14px;
 			}
 
-			.blog-item:hover {
+			.blog-item:hover,
+			.blog-item:focus {
 				padding-left: 18px;
 			}
 		}
@@ -282,14 +298,14 @@
 		
 		<div class="blog-list">
 			{{range .P}}
-			<div class="blog-item">
+			<a href="/blog/{{.DashedTitle}}" class="blog-item">
 				<h3 class="title">
-					<a href="/blog/{{.DashedTitle}}">{{.Title}}</a>
+					<span class="title-text">{{.Title}}</span>
 				</h3>
 				<div class="meta">
 					<span class="date">{{.Date}}</span>
 				</div>
-			</div>
+			</a>
 			{{end}}
 		</div>
 	</div>

@@ -121,22 +121,34 @@
 			border-bottom: 1px solid #151515;
 			position: relative;
 			background: #101010;
+			display: block;
+			text-decoration: none;
+			color: inherit;
+			transition: all 0.2s ease;
 		}
 		
 		.music-item:last-child {
 			border-bottom: none;
 		}
 		
-		.music-item:hover {
+		.music-item:hover,
+		.music-item:focus {
 			background: #FFCFA8;
 			padding-left: 22px;
+			outline: none;
 		}
 
-		.music-item:hover .title a {
+		.music-item:focus {
+			box-shadow: inset 0 0 0 2px #FFCFA8;
+		}
+
+		.music-item:hover .title-text,
+		.music-item:focus .title-text {
 			color: #101010;
 		}
 
-		.music-item:hover .meta {
+		.music-item:hover .meta,
+		.music-item:focus .meta {
 			color: #101010;
 		}
 
@@ -148,9 +160,11 @@
 			width: 0;
 			height: 100%;
 			background: #FFCFA8;
+			transition: width 0.2s ease;
 		}
 
-		.music-item:hover::before {
+		.music-item:hover::before,
+		.music-item:focus::before {
 			width: 3px;
 		}
 		
@@ -160,7 +174,7 @@
 			font-weight: 500;
 		}
 		
-		.title a {
+		.title-text {
 			color: #FFCFA8;
 			text-decoration: none;
 		}
@@ -219,7 +233,8 @@
 				padding: 16px;
 			}
 
-			.music-item:hover {
+			.music-item:hover,
+			.music-item:focus {
 				padding-left: 20px;
 			}
 			
@@ -237,7 +252,8 @@
 				padding: 14px;
 			}
 
-			.music-item:hover {
+			.music-item:hover,
+			.music-item:focus {
 				padding-left: 18px;
 			}
 		}
@@ -260,47 +276,47 @@
 		</div>
 		
 		<div class="music-list">
-			<div class="music-item">
+			<a href="/music/stream" class="music-item">
 				<h3 class="title">
-					<a href="/music/stream">Internet Radio</a>
+					<span class="title-text">Internet Radio</span>
 				</h3>
 				<div class="meta">live streaming</div>
-			</div>
+			</a>
 			
-			<div class="music-item">
+			<a href="https://open.spotify.com/artist/1bWx8OEY8rvxUuw1F2vavp?si=5QDkaQoWRKaeF7Q7vtAsRg" target="_blank" rel="noopener noreferrer" class="music-item">
 				<h3 class="title">
-					<a href="https://open.spotify.com/artist/1bWx8OEY8rvxUuw1F2vavp?si=5QDkaQoWRKaeF7Q7vtAsRg" target="_blank" rel="noopener noreferrer">Spotify</a>
+					<span class="title-text">Spotify</span>
 				</h3>
 				<div class="meta">music streaming</div>
-			</div>
+			</a>
 			
-			<div class="music-item">
+			<a href="https://music.apple.com/us/artist/lqx/1671856240" target="_blank" rel="noopener noreferrer" class="music-item">
 				<h3 class="title">
-					<a href="https://music.apple.com/us/artist/lqx/1671856240" target="_blank" rel="noopener noreferrer">Apple Music</a>
+					<span class="title-text">Apple Music</span>
 				</h3>
 				<div class="meta">music streaming</div>
-			</div>
+			</a>
 			
-			<div class="music-item">
+			<a href="https://soundcloud.com/lqxmusic" target="_blank" rel="noopener noreferrer" class="music-item">
 				<h3 class="title">
-					<a href="https://soundcloud.com/lqxmusic" target="_blank" rel="noopener noreferrer">Soundcloud</a>
+					<span class="title-text">Soundcloud</span>
 				</h3>
 				<div class="meta">audio platform</div>
-			</div>
+			</a>
 			
-			<div class="music-item">
+			<a href="https://music.amazon.com/artists/B0BVRRGLYW/lqx" target="_blank" rel="noopener noreferrer" class="music-item">
 				<h3 class="title">
-					<a href="https://music.amazon.com/artists/B0BVRRGLYW/lqx" target="_blank" rel="noopener noreferrer">Amazon Prime Music</a>
+					<span class="title-text">Amazon Prime Music</span>
 				</h3>
 				<div class="meta">music streaming</div>
-			</div>
+			</a>
 			
-			<div class="music-item">
+			<a href="https://www.deezer.com/en/artist/201507857" target="_blank" rel="noopener noreferrer" class="music-item">
 				<h3 class="title">
-					<a href="https://www.deezer.com/en/artist/201507857" target="_blank" rel="noopener noreferrer">Deezer</a>
+					<span class="title-text">Deezer</span>
 				</h3>
 				<div class="meta">music streaming</div>
-			</div>
+			</a>
 		</div>
 	</div>
 
